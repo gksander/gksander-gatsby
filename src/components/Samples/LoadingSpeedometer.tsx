@@ -1,5 +1,5 @@
 import * as React from "react";
-import styles from "./LoadingSpeedometer.module.scss";
+import { motion } from "framer-motion";
 
 export const LoadingSpeedometer: React.FC = () => (
   <svg viewBox="0 0 512 289" width="100%" xmlns="http://www.w3.org/2000/svg">
@@ -17,12 +17,19 @@ export const LoadingSpeedometer: React.FC = () => (
       d="M437.066 75.0002L387.823 124.242C420.523 156.945 440.995 201.692 442.347 250.86C442.417 253.34 444.464 255.305 446.944 255.305H507.394C509.984 255.305 512.054 253.168 511.999 250.574C510.605 185.367 484.448 122.367 437.066 75.0002V75.0002Z"
       fill="#FF6B6B"
     />
-    <path
+    <motion.path
       fillRule="evenodd"
       clipRule="evenodd"
       d="M269.069 222.361L256.5 18L243.931 222.361C231.093 227.386 222 239.881 222 254.5C222 273.554 237.446 289 256.5 289C275.554 289 291 273.554 291 254.5C291 239.881 281.907 227.386 269.069 222.361Z"
       fill="#6C6C6C"
-      className={styles.pin}
+      animate={{
+        rotate: [-55, 60, 60, -55],
+      }}
+      style={{
+        originX: 0.5,
+        originY: "254.5px",
+      }}
+      transition={{ repeat: Infinity, duration: 2, times: [0, 0.2, 0.5, 1] }}
     />
   </svg>
 );

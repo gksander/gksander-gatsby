@@ -1,5 +1,5 @@
 import * as React from "react";
-import styles from "./LoadingClock.module.scss";
+import { motion } from "framer-motion";
 
 // Config
 const R = 256;
@@ -8,7 +8,11 @@ const tickL = 25;
 const R1 = R - tickBackoff - tickL;
 const R2 = R - tickBackoff;
 const $2PI = 2 * Math.PI;
+const totalDuration = 14;
 const hourNumbers = Array.from({ length: 12 }).map((_, i) => i);
+
+// Animation
+const origin = { originX: "256px", originY: "256px" };
 
 /**
  * Loading clock
@@ -17,12 +21,7 @@ export const LoadingClock: React.FC<{ color?: string }> = ({
   color = "black",
 }) => {
   return (
-    <svg
-      width="100%"
-      viewBox="0 0 512 512"
-      xmlns="http://www.w3.org/2000/svg"
-      className={styles.svg}
-    >
+    <svg width="100%" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
       <circle
         cx="256"
         cy="256"
@@ -50,15 +49,28 @@ export const LoadingClock: React.FC<{ color?: string }> = ({
         );
       })}
 
-      <path
+      {/* Big hand */}
+      <motion.path
         d="M251.362 32.2065C251.833 23.9312 261.167 23.9311 261.638 32.2065L271.986 213.803C272.207 217.689 269.843 221 266.847 221H246.153C243.157 221 240.793 217.689 241.014 213.803L251.362 32.2065Z"
         fill={color}
-        className={styles.bighand}
+        style={{ ...origin }}
+        animate={{ rotate: [0, 360] }}
+        transition={{
+          duration: totalDuration / 12,
+          repeat: Infinity,
+        }}
       />
-      <path
+      {/* Little hand */}
+      <motion.path
         d="M253.019 99.0104C253.339 93.6632 259.661 93.6632 259.981 99.0104L266.99 216.349C267.14 218.86 265.539 221 263.51 221H249.49C247.461 221 245.86 218.86 246.01 216.349L253.019 99.0104Z"
         fill={color}
-        className={styles.littlehand}
+        style={{ ...origin }}
+        animate={{ rotate: [0, 360] }}
+        transition={{
+          duration: totalDuration,
+          repeat: Infinity,
+          ease: "linear",
+        }}
       />
       <path
         fillRule="evenodd"
