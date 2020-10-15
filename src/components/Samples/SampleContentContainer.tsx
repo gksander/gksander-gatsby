@@ -17,13 +17,13 @@ export const SampleContentContainer: React.FC<{
       </div>
       <div className="source-link absolute top-0 inset-x-0 text-white flex items-center cursor-pointer">
         {Boolean(name) && (
-          <Link
+          <a
             className="flex-1 p-2 bg-black bg-opacity-25 hover:bg-opacity-75 transition-all duration-200"
-            to={`#${name}`}
+            href={`#${name}`}
           >
             <FontAwesomeIcon icon={faExpand} className="text-sm" />
             <span className="ml-2">Expand</span>
-          </Link>
+          </a>
         )}
         <a
           className="flex-1 p-2 bg-black bg-opacity-25 hover:bg-opacity-75 transition-all duration-200 flex justify-end items-center"

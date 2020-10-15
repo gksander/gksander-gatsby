@@ -1,5 +1,4 @@
 import * as React from "react";
-import Layout from "../components/Layout";
 import { SEO } from "../components/Seo";
 import { SamplesHero } from "../components/Samples/SamplesHero";
 import { SampleContentContainer } from "../components/Samples/SampleContentContainer";
@@ -8,7 +7,6 @@ import { LoadingBlocks } from "../components/Samples/LoadingBlocks";
 import { LoadingClock } from "../components/Samples/LoadingClock";
 import { LoadingSpinner } from "../components/Samples/LoadingSpinner";
 import classNames from "classnames";
-import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -87,7 +85,7 @@ const Samples: React.FC<{ location?: any }> = ({ location }) => {
   );
 
   return (
-    <Layout>
+    <>
       <SEO title="Samples" />
       <div
         className={classNames(
@@ -97,13 +95,13 @@ const Samples: React.FC<{ location?: any }> = ({ location }) => {
         onClick={() => {}}
       >
         <div className="p-6 flex justify-end">
-          <Link
-            to="/samples"
+          <a
+            href="#"
             className="flex items-center text-white font-bold hover:bg-black rounded p-2 transition-colors duration-200 cursor-pointer border border-white hover:border-transparent"
           >
             <span className="mr-2">Close</span>
             <FontAwesomeIcon icon={faTimes} />
-          </Link>
+          </a>
         </div>
         <div className="flex justify-center items-center flex-1">
           <div
@@ -162,7 +160,7 @@ const Samples: React.FC<{ location?: any }> = ({ location }) => {
           ))}
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 
