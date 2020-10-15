@@ -29,7 +29,12 @@ export const LoadingSpeedometer: React.FC = () => (
         originX: 0.5,
         originY: "254.5px",
       }}
-      transition={{ repeat: Infinity, duration: 2, times: [0, 0.2, 0.5, 1] }}
+      transition={{
+        repeat: Infinity,
+        repeatDelay: 0.3,
+        duration: 2,
+        times: [0, 0.2, 0.5, 1],
+      }}
     />
   </svg>
 );
