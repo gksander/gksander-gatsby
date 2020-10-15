@@ -10,6 +10,7 @@ import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { LoadingRainbox } from "../components/Samples/LoadingRainbox";
+import { PokemonCardSelector } from "../components/Samples/PokemonCardSelector";
 
 type WebSample = {
   sourceUrl: string;
@@ -53,6 +54,12 @@ const webSamples: WebSample[] = [
     component: LoadingSpinner,
     wrappingClass: "w-24",
     name: "loading-spinner",
+  },
+  {
+    sourceUrl: "",
+    component: PokemonCardSelector,
+    wrappingClass: "w-full",
+    name: "pokemon-card-selector",
   },
 ];
 
