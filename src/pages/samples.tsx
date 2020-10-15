@@ -56,7 +56,8 @@ const webSamples: WebSample[] = [
     name: "loading-spinner",
   },
   {
-    sourceUrl: "",
+    sourceUrl:
+      "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/PokemonCardSelector.tsx",
     component: PokemonCardSelector,
     wrappingClass: "w-full",
     name: "pokemon-card-selector",
