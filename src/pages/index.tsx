@@ -8,7 +8,7 @@ import { HomePageContact } from "../components/HomePage/HomePageContact";
 
 const IndexPage: React.FC = () => (
   <>
-    <SEO title="Grant Sander" />
+    <SEO title="Home" />
     <HomePageHero />
     <HomePageExperience />
     <HomePageTools />

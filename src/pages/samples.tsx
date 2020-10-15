@@ -79,10 +79,17 @@ const videoSamples: VideoSample[] = [
 const defaultColor = "#A06B9A";
 
 const Samples: React.FC<{ location?: any }> = ({ location }) => {
-  const activeName = location?.hash?.replace("#", "");
-  const activeItem = webSamples.find(
-    (sample) => sample.name && sample.name === activeName,
+  const [activeItem, setActiveItem] = React.useState<WebSample | undefined>(
+    undefined,
   );
+
+  React.useEffect(() => {
+    const activeName = location?.hash?.replace("#", "");
+    const activeItem = webSamples.find(
+      (sample) => sample.name && sample.name === activeName,
+    );
+    setActiveItem(activeItem);
+  }, [location]);
 
   return (
     <>

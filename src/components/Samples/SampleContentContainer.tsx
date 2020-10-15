@@ -15,15 +15,21 @@ export const SampleContentContainer: React.FC<{
       <div className="absolute inset-0 flex justify-center items-center">
         {children}
       </div>
-      <div className="source-link absolute top-0 inset-x-0 text-white flex items-center cursor-pointer">
-        {Boolean(name) && (
+      <div className="source-link absolute top-0 inset-x-0 text-white flex">
+        {Boolean(name) ? (
           <a
-            className="flex-1 p-2 bg-black bg-opacity-25 hover:bg-opacity-75 transition-all duration-200"
+            className="flex-1 p-2 cursor-pointer bg-black bg-opacity-25 hover:bg-opacity-75 transition-all duration-200"
             href={`#${name}`}
           >
-            <FontAwesomeIcon icon={faExpand} className="text-sm" />
-            <span className="ml-2">Expand</span>
+            {Boolean(name) && (
+              <React.Fragment>
+                <FontAwesomeIcon icon={faExpand} className="text-sm" />
+                <span className="ml-2">Expand</span>
+              </React.Fragment>
+            )}
           </a>
+        ) : (
+          <div className="flex-1 bg-black bg-opacity-25" />
         )}
         <a
           className="flex-1 p-2 bg-black bg-opacity-25 hover:bg-opacity-75 transition-all duration-200 flex justify-end items-center"
