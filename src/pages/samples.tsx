@@ -20,28 +20,28 @@ type WebSample = {
 const webSamples: WebSample[] = [
   {
     sourceUrl:
-      "https://github.com/gksander/gksander-preact/blob/master/src/routes/samples/components/LoadingSpeedometer.tsx",
+      "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingSpeedometer.tsx",
     component: LoadingSpeedometer,
     wrappingClass: "w-40",
     name: "loading-speedometer",
   },
   {
     sourceUrl:
-      "https://github.com/gksander/gksander-preact/blob/master/src/routes/samples/components/LoadingBlocks.tsx",
+      "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingBlocks.tsx",
     component: LoadingBlocks,
     wrappingClass: "w-32",
     name: "loading-blocks",
   },
   {
     sourceUrl:
-      "https://github.com/gksander/gksander-preact/blob/master/src/routes/samples/components/LoadingClock.tsx",
+      "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingClock.tsx",
     component: LoadingClock,
     wrappingClass: "w-32",
     name: "loading-clock",
   },
   {
     sourceUrl:
-      "https://github.com/gksander/gksander-preact/blob/master/src/routes/samples/components/LoadingSpinner.tsx",
+      "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingSpinner.tsx",
     component: LoadingSpinner,
     wrappingClass: "w-24",
     name: "loading-spinner",
