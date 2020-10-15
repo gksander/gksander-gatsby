@@ -1,0 +1,11 @@
+.hero {
+  .headshot {
+    filter: grayscale(1);
+  }
+
+  &:hover {
+    .headshot {
+      filter: grayscale(0);
+    }
+  }
+}
