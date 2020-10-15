@@ -1,4 +1,5 @@
 import * as React from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { SEO } from "../components/Seo";
 import { SamplesHero } from "../components/Samples/SamplesHero";
 import { SampleContentContainer } from "../components/Samples/SampleContentContainer";
@@ -6,7 +7,6 @@ import { LoadingSpeedometer } from "../components/Samples/LoadingSpeedometer";
 import { LoadingBlocks } from "../components/Samples/LoadingBlocks";
 import { LoadingClock } from "../components/Samples/LoadingClock";
 import { LoadingSpinner } from "../components/Samples/LoadingSpinner";
-import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { LoadingRainbox } from "../components/Samples/LoadingRainbox";
@@ -109,34 +109,42 @@ const Samples: React.FC<{ location?: any }> = ({ location }) => {
   return (
     <>
       <SEO title="Samples" />
-      <div
-        className={classNames(
-          "fixed inset-0 bg-black bg-opacity-75 flex flex-col transition-all duration-200",
-          activeItem ? "z-10 opacity-1" : "z-0 opacity-0 pointer-events-none",
+      <AnimatePresence>
+        {Boolean(activeItem) && (
+          <motion.div
+            className={
+              "fixed inset-0 bg-black bg-opacity-75 flex flex-col transition-all duration-200 z-10"
+            }
+            onClick={() => {}}
+            initial={{ opacity: 0, y: 1000 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 1000 }}
+            transition={{ duration: 0.15 }}
+            layoutId={activeItem?.name}
+          >
+            <div className="p-6 flex justify-end">
+              <a
+                href="#"
+                className="flex items-center text-white font-bold hover:bg-black rounded p-2 transition-colors duration-200 cursor-pointer border border-white hover:border-transparent"
+              >
+                <span className="mr-2">Close</span>
+                <FontAwesomeIcon icon={faTimes} />
+              </a>
+            </div>
+            <div className="flex justify-center items-center flex-1">
+              <div
+                className="w-64 h-64 bg-gray-300 p-6 rounded shadow-lg cursor-auto flex justify-center items-center"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                {/* @ts-ignore */}
+                {activeItem && <activeItem.component color={defaultColor} />}
+              </div>
+            </div>
+          </motion.div>
         )}
-        onClick={() => {}}
-      >
-        <div className="p-6 flex justify-end">
-          <a
-            href="#"
-            className="flex items-center text-white font-bold hover:bg-black rounded p-2 transition-colors duration-200 cursor-pointer border border-white hover:border-transparent"
-          >
-            <span className="mr-2">Close</span>
-            <FontAwesomeIcon icon={faTimes} />
-          </a>
-        </div>
-        <div className="flex justify-center items-center flex-1">
-          <div
-            className="w-64 h-64 bg-gray-300 p-6 rounded shadow-lg cursor-auto flex justify-center items-center"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-          >
-            {/* @ts-ignore */}
-            {activeItem && <activeItem.component color={defaultColor} />}
-          </div>
-        </div>
-      </div>
+      </AnimatePresence>
       <SamplesHero />
       {/* Web animations */}
       <div className="container max-w-5xl py-10">

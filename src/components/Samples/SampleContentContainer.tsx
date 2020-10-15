@@ -8,14 +8,16 @@ export const SampleContentContainer: React.FC<{
   name?: string;
 }> = ({ sourceUrl, children, name }) => {
   return (
-    <div
-      className="bg-gray-300 rounded relative overflow-hidden"
-      style={{ paddingBottom: "100%" }}
-    >
-      <div className="absolute inset-0 flex justify-center items-center">
-        {children}
+    <div className="bg-gray-300 rounded overflow-hidden">
+      <div
+        className="relative overflow-hidden"
+        style={{ paddingBottom: "100%" }}
+      >
+        <div className="absolute inset-0 flex justify-center items-center">
+          {children}
+        </div>
       </div>
-      <div className="source-link absolute top-0 inset-x-0 text-white flex">
+      <div className="text-white flex">
         {Boolean(name) ? (
           <a
             className="flex-1 p-2 cursor-pointer bg-black bg-opacity-25 hover:bg-opacity-75 transition-all duration-200"
