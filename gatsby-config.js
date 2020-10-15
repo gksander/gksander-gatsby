@@ -23,7 +23,16 @@ module.exports = {
 
     `gatsby-plugin-postcss`,
     `gatsby-plugin-sass`,
-    // `gatsby-transformer-typescript-css-modules`,
+
+    // Web fonts
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Sansita Swashed:300,400", "Montserrat:400,700"],
+        },
+      },
+    },
 
     // {
     //   resolve: `gatsby-plugin-manifest`,
