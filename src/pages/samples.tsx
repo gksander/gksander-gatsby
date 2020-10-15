@@ -9,6 +9,7 @@ import { LoadingSpinner } from "../components/Samples/LoadingSpinner";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { LoadingRainbox } from "../components/Samples/LoadingRainbox";
 
 type WebSample = {
   sourceUrl: string;
@@ -38,6 +39,13 @@ const webSamples: WebSample[] = [
     component: LoadingClock,
     wrappingClass: "w-32",
     name: "loading-clock",
+  },
+  {
+    sourceUrl:
+      "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingRainbow.tsx",
+    component: LoadingRainbox,
+    wrappingClass: "w-40",
+    name: "loading-rainbow",
   },
   {
     sourceUrl:
