@@ -11,15 +11,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { LoadingRainbox } from "../components/Samples/LoadingRainbox";
 import { PokemonCardSelector } from "../components/Samples/PokemonCardSelector";
+import { FixedAspectRatio } from "../components/FixedAspectRatio";
+import classNames from "classnames";
 
 type WebSample = {
   sourceUrl: string;
   wrappingClass?: string;
+  expandedWrappingClass?: string;
   component: React.FC;
   name?: string;
 };
 
 const webSamples: WebSample[] = [
+  {
+    sourceUrl:
+      "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/PokemonCardSelector.tsx",
+    component: PokemonCardSelector,
+    wrappingClass: "w-full",
+    expandedWrappingClass: "w-5/6 sm:w-1/2",
+    name: "pokemon-card-selector",
+  },
   {
     sourceUrl:
       "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingSpeedometer.tsx",
@@ -54,13 +65,6 @@ const webSamples: WebSample[] = [
     component: LoadingSpinner,
     wrappingClass: "w-24",
     name: "loading-spinner",
-  },
-  {
-    sourceUrl:
-      "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/PokemonCardSelector.tsx",
-    component: PokemonCardSelector,
-    wrappingClass: "w-full",
-    name: "pokemon-card-selector",
   },
 ];
 
@@ -134,13 +138,18 @@ const Samples: React.FC<{ location?: any }> = ({ location }) => {
             </div>
             <div className="flex justify-center items-center flex-1">
               <div
-                className="w-64 h-64 bg-gray-300 p-6 rounded shadow-lg cursor-auto flex justify-center items-center"
+                className={classNames(
+                  "bg-gray-300 p-6 rounded shadow-lg cursor-auto flex justify-center items-center w-64",
+                  activeItem?.expandedWrappingClass,
+                )}
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
               >
-                {/* @ts-ignore */}
-                {activeItem && <activeItem.component color={defaultColor} />}
+                <FixedAspectRatio ratio={1}>
+                  {/* @ts-ignore */}
+                  {activeItem && <activeItem.component color={defaultColor} />}
+                </FixedAspectRatio>
               </div>
             </div>
           </motion.div>

@@ -5,6 +5,7 @@ import {
   AnimateSharedLayout,
   Variants,
 } from "framer-motion";
+import { FixedAspectRatio } from "../FixedAspectRatio";
 
 type Pokemon = { name: string; id: number; accentColor?: string };
 const pokemon: Pokemon[] = [
@@ -44,21 +45,23 @@ export const PokemonCardSelector: React.FC = () => {
       <div className="w-full relative" style={{ paddingBottom: "100%" }}>
         <div className="absolute inset-0 p-1 grid grid-cols-3 grid-rows-3 gap-1">
           {pokemon.map((pokemon) => (
-            <motion.img
-              src={`https://pokedex.gksander.com/img/pokemon/${pokemon.id}.svg`}
-              alt={pokemon.name}
-              key={pokemon.name}
-              className="w-full h-full object-contain border-b-2 rounded p-2 cursor-pointer bg-gray-100 hover:shadow"
-              style={{ borderBottomColor: pokemon.accentColor }}
-              onClick={() => setSelectedPokemon(pokemon)}
-              layoutId={pokemon.name}
-              whileHover={{
-                y: -5,
-              }}
-              whileTap={{
-                y: -3,
-              }}
-            />
+            <FixedAspectRatio ratio={1} key={pokemon.name}>
+              <motion.img
+                src={`https://pokedex.gksander.com/img/pokemon/${pokemon.id}.svg`}
+                alt={pokemon.name}
+                className="w-full h-full object-contain border-b-4 rounded p-2 cursor-pointer bg-gray-100 hover:shadow"
+                style={{ borderBottomColor: pokemon.accentColor }}
+                onClick={() => setSelectedPokemon(pokemon)}
+                layoutId={pokemon.name}
+                whileHover={{
+                  y: -5,
+                }}
+                whileTap={{
+                  y: -3,
+                }}
+                initial={false}
+              />
+            </FixedAspectRatio>
           ))}
         </div>
         <AnimatePresence>
@@ -87,18 +90,13 @@ export const PokemonCardSelector: React.FC = () => {
                 <div className="font-fancy font-thin text-xl mb-3 text-center">
                   {selectedPokemon.name}
                 </div>
-                <div
-                  className="w-full relative"
-                  style={{ paddingBottom: "100%" }}
-                >
-                  <div className="absolute inset-0">
-                    <img
-                      src={`https://pokedex.gksander.com/img/pokemon/${selectedPokemon.id}.svg`}
-                      alt={`Pokemon ${selectedPokemon.name}`}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                </div>
+                <FixedAspectRatio ratio={1}>
+                  <img
+                    src={`https://pokedex.gksander.com/img/pokemon/${selectedPokemon.id}.svg`}
+                    alt={`Pokemon ${selectedPokemon.name}`}
+                    className="w-full h-full object-contain"
+                  />
+                </FixedAspectRatio>
               </motion.div>
             </motion.div>
           )}

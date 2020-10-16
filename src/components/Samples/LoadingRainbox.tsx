@@ -31,7 +31,7 @@ export const LoadingRainbox: React.FC = () => {
     >
       <motion.g
         animate={{ rotate: 360 }}
-        transition={{ duration: 10, ease: "linear", repeat: Infinity }}
+        transition={{ duration: 3, ease: "linear", repeat: Infinity }}
       >
         {colors.map((color, i) => {
           const cx = trackR * Math.cos((i / numColors) * $2PI);
