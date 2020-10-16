@@ -3,6 +3,21 @@ import { SEO } from "../components/Seo";
 import { graphql, useStaticQuery } from "gatsby";
 import BackgroundImage from "gatsby-background-image";
 
+const Sections: { title: string; description: string }[] = [
+  {
+    title: "I build software",
+    description: `I build full-stack web and mobile apps using primarily JavaScript tooling. I have experience building web front-ends using React and Vue.js, mobile apps using React Native, and API backends using both Node.js and Ruby on Rails.`,
+  },
+  {
+    title: "I lead teams",
+    description: `Building large-scale software is a team sport, and I love leading by example. I'm a strong communicator who fully embraces the non-technical side of software development.`,
+  },
+  {
+    title: "I design things",
+    description: `Though I'm not trained as a designer, I enjoy thinking about design and user experience. I'm particularly fascinated with graphiccs/modeling and animation.`,
+  },
+];
+
 const IndexPage: React.FC = () => {
   const data = useStaticQuery(
     graphql`
@@ -23,14 +38,19 @@ const IndexPage: React.FC = () => {
   return (
     <React.Fragment>
       <SEO title="Home" />
-      <div className="w-full h-full flex flex-col justify-center items-center">
-        <div className="text-2xl md:text-3xl leading-tight">Hi, I'm</div>
-        <div className="font-fancy font-thin text-5xl md:text-6xl text-center leading-snug">
-          Grant Sander
+      <div className="w-full h-full p-2 leading-tig">
+        <div className="grid gap-6">
+          {Sections.map((section) => (
+            <div className="">
+              <div className="text-4xl font-fancy text-gray-900">
+                {section.title}.
+              </div>
+              <div className="text-gray-800 max-w-xl">
+                {section.description}
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="text-2xl font-bold">Software Engineer</div>
-        <div className="text-xl">Team Leader</div>
-        <div className="text-base">Sort-of Designer</div>
       </div>
     </React.Fragment>
   );

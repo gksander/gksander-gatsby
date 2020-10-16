@@ -85,7 +85,7 @@ const SocialLinks: { href: string; icon: typeof faEnvelopeOpen }[] = [
 
 const headshotVariants: Variants = {
   large: {
-    width: `min(500px, 100%)`,
+    width: `min(600px, 100%)`,
   },
   small: {
     width: 200,
@@ -120,10 +120,13 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
 
   return (
     <div className="flex flex-col md:flex-row md:flex-shrink-0 w-screen h-screen overflow-hidden bg-gray-200">
-      <div className="w-full md:w-64 p-2 md:p-4 flex flex-col">
+      <div className="w-full md:w-64 p-2 md:p-4 flex flex-col text-gray-800">
         <div className="md:pb-3">
-          <Link to="/" className="font-bold text-xl md:text-3xl leading-tight">
-            <span className="font-thin text-lg md:text-xl">gk</span>SANDER
+          <Link
+            to="/"
+            className="font-bold text-xl md:text-2xl leading-tight text-gray-900"
+          >
+            Grant Sander
           </Link>
         </div>
         <div className="flex-1 flex md:flex-col">
@@ -134,14 +137,14 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
               </Link>
             ))}
           </div>
-          <div className="hidden md:flex gap-x-3 justify-center">
+          <div className="hidden md:flex justify-center">
             {SocialLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2 border border-transparent hover:border-white rounded-full flex justify-center items-center"
+                className="p-2 hover:bg-gray-800 hover:text-white transition-colors duration-200 rounded-full flex justify-center items-center"
               >
                 <FontAwesomeIcon icon={link.icon} className="text-lg" />
               </a>
