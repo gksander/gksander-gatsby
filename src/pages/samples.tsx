@@ -114,52 +114,62 @@ const Samples: React.FC<{ location?: any }> = ({ location }) => {
   return (
     <>
       <SEO title="Samples" />
-      <SamplesHero />
-      {/* Web animations */}
-      <div className="container max-w-5xl py-10">
-        <div className="font-fancy text-4xl font-thin">
-          Web Animations (JS and CSS)
-        </div>
-        <div className="text-gray-700">
-          Here are some samples using raw CSS animations, as well as GSAP + Vue.
-        </div>
-        <div className="mb-4" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-          {webSamples.map((sample) => (
-            <SampleContentContainer
-              sourceUrl={sample.sourceUrl}
-              key={sample.sourceUrl}
-              title={sample.title}
-              subtitle={sample.subtitle}
-            >
-              <div className={sample.wrappingClass}>
-                {/* @ts-ignore*/}
-                <sample.component color={defaultColor} />
-              </div>
-            </SampleContentContainer>
-          ))}
-        </div>
-      </div>
-      {/* Vidoes */}
-      <div className="container max-w-5xl">
-        <div className="font-fancy text-4xl font-thin">
-          React Native Animations
-        </div>
-        <div className="text-gray-700">
-          Here are some mobile samples using React Native's Animated API.
-        </div>
-        <div className="mb-4" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-10">
-          {videoSamples.map((sample) => (
-            <SampleContentContainer
-              title={sample.title}
-              subtitle={sample.subtitle}
-              sourceUrl={sample.sourceUrl}
-              key={sample.sourceUrl}
-            >
-              <video src={sample.src} controls loop className="w-full h-full" />
-            </SampleContentContainer>
-          ))}
+      <div className="w-full h-full overflow-auto">
+        <div className="container max-w-4xl">
+          <SamplesHero />
+          {/* Web animations */}
+          <div className="container max-w-5xl py-10">
+            <div className="font-fancy text-4xl font-thin">
+              Web Animations (JS and CSS)
+            </div>
+            <div className="text-gray-700">
+              Here are some samples using raw CSS animations, as well as GSAP +
+              Vue.
+            </div>
+            <div className="mb-4" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              {webSamples.map((sample) => (
+                <SampleContentContainer
+                  sourceUrl={sample.sourceUrl}
+                  key={sample.sourceUrl}
+                  title={sample.title}
+                  subtitle={sample.subtitle}
+                >
+                  <div className={sample.wrappingClass}>
+                    {/* @ts-ignore*/}
+                    <sample.component color={defaultColor} />
+                  </div>
+                </SampleContentContainer>
+              ))}
+            </div>
+          </div>
+          {/* Vidoes */}
+          <div className="container max-w-5xl">
+            <div className="font-fancy text-4xl font-thin">
+              React Native Animations
+            </div>
+            <div className="text-gray-700">
+              Here are some mobile samples using React Native's Animated API.
+            </div>
+            <div className="mb-4" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-10">
+              {videoSamples.map((sample) => (
+                <SampleContentContainer
+                  title={sample.title}
+                  subtitle={sample.subtitle}
+                  sourceUrl={sample.sourceUrl}
+                  key={sample.sourceUrl}
+                >
+                  <video
+                    src={sample.src}
+                    controls
+                    loop
+                    className="w-full h-full"
+                  />
+                </SampleContentContainer>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>
