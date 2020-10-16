@@ -10,6 +10,7 @@ html {
 }
 /* Global behavior */
 html {
+  font-size: 18px;
   font-family: "Montserrat", sans-serif;
   scroll-behavior: smooth;
 }
