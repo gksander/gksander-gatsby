@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          ...colors.red,
+          ...colors.purple,
         },
         owhite: {
           default: "rgba(255,255,255, 0.95)",

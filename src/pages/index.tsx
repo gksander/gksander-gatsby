@@ -37,18 +37,20 @@ const IndexPage: React.FC = () => {
   return (
     <React.Fragment>
       <SEO title="Home" />
-      <div className="w-full h-full p-2">
-        <div className="grid gap-6 bg-gray-300 bg-opacity-75 p-2 rounded md:p-0 md:bg-opacity-0">
-          {Sections.map((section) => (
-            <div key={section.title}>
-              <div className="text-4xl font-fancy text-gray-900">
-                {section.title}.
+      <div className="w-full h-full p-2 overflow-auto">
+        <div className="container max-w-4xl">
+          <div className="grid gap-6 p-2">
+            {Sections.map((section) => (
+              <div key={section.title}>
+                <div className="text-4xl font-fancy text-primary-700">
+                  {section.title}.
+                </div>
+                <div className="text-gray-800 max-w-xl">
+                  {section.description}
+                </div>
               </div>
-              <div className="text-gray-800 max-w-xl">
-                {section.description}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </React.Fragment>

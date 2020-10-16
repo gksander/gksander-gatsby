@@ -103,7 +103,7 @@ const headshotVariants: Variants = {
     width: `min(600px, 100%)`,
   },
   small: {
-    width: 200,
+    width: 300,
   },
 };
 
@@ -135,24 +135,24 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
 
   return (
     <AnimateSharedLayout>
-      <div className="flex flex-col md:flex-row md:flex-shrink-0 w-screen h-screen overflow-hidden bg-gray-200">
-        <div className="w-full md:w-64 p-2 md:p-4 flex flex-col text-gray-800">
+      <div className="flex flex-col md:flex-row md:flex-shrink-0 w-screen h-screen overflow-hidden bg-white">
+        <div className="w-full border-b md:border-b-0 md:shadow-none md:w-64 p-2 md:p-4 flex flex-col bg-primary-700 text-white">
           <div className="md:pb-3">
             <Link
               to="/"
-              className="font-bold text-xl md:text-2xl leading-tight text-gray-900"
+              className="font-bold text-xl md:text-3xl leading-tight"
             >
               Grant Sander
             </Link>
           </div>
           <div className="flex-1 flex md:flex-col">
-            <div className="flex-1 flex flex-row md:flex-col md:gap-y-4 gap-x-2">
+            <div className="flex-1 flex flex-row md:flex-col md:gap-y-2 gap-x-2">
               {Links.map((link) => (
                 <Link
                   to={link.to}
                   key={link.to}
-                  className="flex items-center p-1 rounded hover:bg-gray-300 hover:text-primary-700 transition-all duration-200"
-                  activeClassName="bg-gray-300 text-primary-700"
+                  className="flex items-center p-1 rounded hover:bg-primary-800 transition-all duration-200"
+                  activeClassName="bg-primary-800"
                 >
                   <div className="flex flex-1">
                     <span className="w-8 text-center hidden md:inline">
@@ -167,7 +167,7 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
                         initial={{ scale: 0, opacity: 0, rotate: -90 }}
                         animate={{ scale: 1, opacity: 1, rotate: 0 }}
                         exit={{ scale: 0, opacity: 0, rotate: 90 }}
-                        className="hidden md:inline"
+                        className="hidden md:inline text-white"
                       >
                         <FontAwesomeIcon icon={faStar} />
                       </motion.span>
@@ -176,7 +176,7 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
                 </Link>
               ))}
             </div>
-            <div className="hidden md:flex">
+            <div className="hidden md:flex justify-center">
               {SocialLinks.map((link) => (
                 <a
                   key={link.href}
@@ -209,18 +209,20 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
               />
             </FixedAspectRatio>
           </motion.div>
-          <AnimatePresence>
-            <motion.div
-              variants={variants}
-              initial={isFirstMount ? false : "initial"}
-              animate="enter"
-              exit="exit"
-              key={location?.pathname || "nothing"}
-              className="absolute inset-0 overflow-auto"
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
+          <div className="absolute inset-0 overflow-hidden bg-white bg-opacity-75">
+            <AnimatePresence>
+              <motion.div
+                variants={variants}
+                initial={isFirstMount ? false : "initial"}
+                animate="enter"
+                exit="exit"
+                key={location?.pathname || "nothing"}
+                className="absolute inset-0"
+              >
+                {children}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </main>
       </div>
     </AnimateSharedLayout>
