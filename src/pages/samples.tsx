@@ -1,5 +1,4 @@
 import * as React from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { SEO } from "../components/Seo";
 import { SamplesHero } from "../components/Samples/SamplesHero";
 import { SampleContentContainer } from "../components/Samples/SampleContentContainer";
@@ -7,89 +6,102 @@ import { LoadingSpeedometer } from "../components/Samples/LoadingSpeedometer";
 import { LoadingBlocks } from "../components/Samples/LoadingBlocks";
 import { LoadingClock } from "../components/Samples/LoadingClock";
 import { LoadingSpinner } from "../components/Samples/LoadingSpinner";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { LoadingRainbox } from "../components/Samples/LoadingRainbox";
 import { PokemonCardSelector } from "../components/Samples/PokemonCardSelector";
-import { FixedAspectRatio } from "../components/FixedAspectRatio";
-import classNames from "classnames";
 
 type WebSample = {
+  title: string;
+  subtitle: string;
   sourceUrl: string;
   wrappingClass?: string;
   expandedWrappingClass?: string;
   component: React.FC;
-  name?: string;
 };
 
 const webSamples: WebSample[] = [
   {
+    title: "Pokemon Cards",
+    subtitle: "Click one!",
     sourceUrl:
       "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/PokemonCardSelector.tsx",
     component: PokemonCardSelector,
     wrappingClass: "w-full",
     expandedWrappingClass: "w-5/6 sm:w-1/2",
-    name: "pokemon-card-selector",
   },
   {
+    title: "Loading Speedometer",
+    subtitle: "Using Framer Motion",
     sourceUrl:
       "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingSpeedometer.tsx",
     component: LoadingSpeedometer,
     wrappingClass: "w-40",
-    name: "loading-speedometer",
   },
   {
+    title: "Loading Blocks",
+    subtitle: "Using SCSS",
     sourceUrl:
       "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingBlocks.tsx",
     component: LoadingBlocks,
     wrappingClass: "w-32",
-    name: "loading-blocks",
   },
   {
+    title: "Loading Clock",
+    subtitle: "Using Framer Motion",
     sourceUrl:
       "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingClock.tsx",
     component: LoadingClock,
     wrappingClass: "w-32",
-    name: "loading-clock",
   },
   {
+    title: "Loading Rainbow",
+    subtitle: "Using Framer Motion",
     sourceUrl:
       "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingRainbow.tsx",
     component: LoadingRainbox,
     wrappingClass: "w-40",
-    name: "loading-rainbow",
   },
   {
+    title: "Loading Spinner",
+    subtitle: "Using SCSS",
     sourceUrl:
       "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/LoadingSpinner.tsx",
     component: LoadingSpinner,
     wrappingClass: "w-24",
-    name: "loading-spinner",
   },
 ];
 
 type VideoSample = {
+  title: string;
+  subtitle: string;
   sourceUrl: string;
   src: string;
 };
 
 const videoSamples: VideoSample[] = [
   {
+    title: "Tilt Carousel",
+    subtitle: "RN Animated API",
     sourceUrl:
       "https://github.com/gksander/react-native-animation-samples/blob/master/views/TiltCarousel/TiltCarousel.view.tsx",
     src: require("../video/tilt-carousel.mp4"),
   },
   {
+    title: "Pokedex",
+    subtitle: "RN Animated API",
     sourceUrl:
       "https://github.com/gksander/react-native-animation-samples/tree/master/views/Pokedex",
     src: require("../video/pokedex.mp4"),
   },
   {
+    title: "Pokemon Slider",
+    subtitle: "RN Animated API",
     sourceUrl:
       "https://github.com/gksander/react-native-animation-samples/blob/master/views/PokemonSlider/PokemonSlider.view.tsx",
     src: require("../video/pokeslider-1.mp4"),
   },
   {
+    title: "Image Loading Animation",
+    subtitle: "RN Animated API",
     sourceUrl:
       "https://github.com/gksander/react-native-animation-samples/blob/master/views/ImageLoad/ItemCard.tsx",
     src: require("../video/image-loading.mp4"),
@@ -99,62 +111,9 @@ const videoSamples: VideoSample[] = [
 const defaultColor = "#A06B9A";
 
 const Samples: React.FC<{ location?: any }> = ({ location }) => {
-  const [activeItem, setActiveItem] = React.useState<WebSample | undefined>(
-    undefined,
-  );
-
-  React.useEffect(() => {
-    const activeName = location?.hash?.replace("#", "");
-    const activeItem = webSamples.find(
-      (sample) => sample.name && sample.name === activeName,
-    );
-    setActiveItem(activeItem);
-  }, [location]);
-
   return (
     <>
       <SEO title="Samples" />
-      <AnimatePresence>
-        {Boolean(activeItem) && (
-          <motion.div
-            className={
-              "fixed inset-0 bg-black bg-opacity-75 flex flex-col transition-all duration-200 z-10"
-            }
-            onClick={() => {}}
-            initial={{ opacity: 0, y: 1000 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 1000 }}
-            transition={{ duration: 0.15 }}
-            layoutId={activeItem?.name}
-          >
-            <div className="p-6 flex justify-end">
-              <a
-                href="#"
-                className="flex items-center text-white font-bold hover:bg-black rounded p-2 transition-colors duration-200 cursor-pointer border border-white hover:border-transparent"
-              >
-                <span className="mr-2">Close</span>
-                <FontAwesomeIcon icon={faTimes} />
-              </a>
-            </div>
-            <div className="flex justify-center items-center flex-1">
-              <div
-                className={classNames(
-                  "bg-gray-300 p-6 rounded shadow-lg cursor-auto flex justify-center items-center w-64",
-                  activeItem?.expandedWrappingClass,
-                )}
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-              >
-                <FixedAspectRatio ratio={1}>
-                  {/* @ts-ignore */}
-                  {activeItem && <activeItem.component color={defaultColor} />}
-                </FixedAspectRatio>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
       <SamplesHero />
       {/* Web animations */}
       <div className="container max-w-5xl py-10">
@@ -170,7 +129,8 @@ const Samples: React.FC<{ location?: any }> = ({ location }) => {
             <SampleContentContainer
               sourceUrl={sample.sourceUrl}
               key={sample.sourceUrl}
-              name={sample.name}
+              title={sample.title}
+              subtitle={sample.subtitle}
             >
               <div className={sample.wrappingClass}>
                 {/* @ts-ignore*/}
@@ -192,6 +152,8 @@ const Samples: React.FC<{ location?: any }> = ({ location }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-10">
           {videoSamples.map((sample) => (
             <SampleContentContainer
+              title={sample.title}
+              subtitle={sample.subtitle}
               sourceUrl={sample.sourceUrl}
               key={sample.sourceUrl}
             >
