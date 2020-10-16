@@ -20,6 +20,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackgroundImage from "gatsby-background-image";
 import GatsbyImage from "gatsby-image/index";
+import { FixedAspectRatio } from "./FixedAspectRatio";
 
 const duration = 0.3;
 
@@ -84,12 +85,10 @@ const SocialLinks: { href: string; icon: typeof faEnvelopeOpen }[] = [
 
 const headshotVariants: Variants = {
   large: {
-    width: 400,
-    height: 400,
+    width: `min(500px, 100%)`,
   },
   small: {
     width: 200,
-    height: 200,
   },
 };
 
@@ -152,19 +151,21 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
       </div>
       <main className="flex-1 overflow-auto relative">
         <motion.div
-          className="absolute right-0 bottom-0 w-64 h-64"
+          className="absolute right-0 bottom-0"
           variants={headshotVariants}
           initial={false}
           animate={pathname === "/" ? "large" : "small"}
           style={{ filter: `grayscale(1)` }}
           transition={{ duration: 2 * duration }}
         >
-          <GatsbyImage
-            className="w-full h-full"
-            fluid={file.childImageSharp.fluid}
-            alt="Truck background"
-            imgStyle={{ objectPosition: "left center" }}
-          />
+          <FixedAspectRatio ratio={1}>
+            <GatsbyImage
+              className="w-full h-full"
+              fluid={file.childImageSharp.fluid}
+              alt="Truck background"
+              imgStyle={{ objectPosition: "left center" }}
+            />
+          </FixedAspectRatio>
         </motion.div>
         <AnimatePresence>
           <motion.div
