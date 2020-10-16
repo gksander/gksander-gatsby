@@ -1,7 +1,6 @@
 import * as React from "react";
 import { SEO } from "../components/Seo";
 import { graphql, useStaticQuery } from "gatsby";
-import BackgroundImage from "gatsby-background-image";
 
 const Sections: { title: string; description: string }[] = [
   {
@@ -38,10 +37,10 @@ const IndexPage: React.FC = () => {
   return (
     <React.Fragment>
       <SEO title="Home" />
-      <div className="w-full h-full p-2 leading-tig">
-        <div className="grid gap-6">
+      <div className="w-full h-full p-2">
+        <div className="grid gap-6 bg-gray-300 bg-opacity-75 p-2 rounded md:p-0 md:bg-opacity-0">
           {Sections.map((section) => (
-            <div className="">
+            <div key={section.title}>
               <div className="text-4xl font-fancy text-gray-900">
                 {section.title}.
               </div>

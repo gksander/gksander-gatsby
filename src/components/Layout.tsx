@@ -6,11 +6,21 @@
  */
 
 import * as React from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  Variants,
+  AnimateSharedLayout,
+} from "framer-motion";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import {
+  faAt,
   faEnvelopeOpen,
   faExternalLinkSquareAlt,
+  faFileAlt,
+  faHammer,
+  faStar,
+  faVial,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithubSquare,
@@ -23,6 +33,7 @@ import GatsbyImage from "gatsby-image/index";
 import { FixedAspectRatio } from "./FixedAspectRatio";
 
 const duration = 0.3;
+const MotionLink = motion.custom(Link);
 
 const variants: Variants = {
   initial: {
@@ -45,22 +56,26 @@ const variants: Variants = {
   },
 };
 
-const Links: { title: string; to: string }[] = [
+const Links: { title: string; to: string; icon: typeof faVial }[] = [
   {
     title: "Resume",
     to: "/resume",
+    icon: faFileAlt,
   },
   {
     title: "Projects",
     to: "/projects",
+    icon: faHammer,
   },
   {
     title: "Samples",
     to: "/samples",
+    icon: faVial,
   },
   {
     title: "Contact",
     to: "/contact",
+    icon: faAt,
   },
 ];
 
@@ -119,71 +134,96 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
   }, [pathname]);
 
   return (
-    <div className="flex flex-col md:flex-row md:flex-shrink-0 w-screen h-screen overflow-hidden bg-gray-200">
-      <div className="w-full md:w-64 p-2 md:p-4 flex flex-col text-gray-800">
-        <div className="md:pb-3">
-          <Link
-            to="/"
-            className="font-bold text-xl md:text-2xl leading-tight text-gray-900"
-          >
-            Grant Sander
-          </Link>
-        </div>
-        <div className="flex-1 flex md:flex-col">
-          <div className="flex-1 flex flex-row md:flex-col md:gap-y-2 gap-x-2">
-            {Links.map((link) => (
-              <Link to={link.to} key={link.to} activeClassName="font-bold">
-                {link.title}
-              </Link>
-            ))}
+    <AnimateSharedLayout>
+      <div className="flex flex-col md:flex-row md:flex-shrink-0 w-screen h-screen overflow-hidden bg-gray-200">
+        <div className="w-full md:w-64 p-2 md:p-4 flex flex-col text-gray-800">
+          <div className="md:pb-3">
+            <Link
+              to="/"
+              className="font-bold text-xl md:text-2xl leading-tight text-gray-900"
+            >
+              Grant Sander
+            </Link>
           </div>
-          <div className="hidden md:flex justify-center">
-            {SocialLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2 hover:bg-gray-800 hover:text-white transition-colors duration-200 rounded-full flex justify-center items-center"
-              >
-                <FontAwesomeIcon icon={link.icon} className="text-lg" />
-              </a>
-            ))}
+          <div className="flex-1 flex md:flex-col">
+            <div className="flex-1 flex flex-row md:flex-col md:gap-y-4 gap-x-2">
+              {Links.map((link) => (
+                <Link
+                  to={link.to}
+                  key={link.to}
+                  className="flex items-center p-1 rounded hover:bg-gray-300 hover:text-primary-700 transition-all duration-200"
+                  activeClassName="bg-gray-300 text-primary-700"
+                >
+                  <div className="flex flex-1">
+                    <span className="w-8 text-center hidden md:inline">
+                      <FontAwesomeIcon icon={link.icon} />
+                    </span>
+                    <span className="flex-1">{link.title}</span>
+                  </div>
+                  <AnimatePresence>
+                    {pathname.startsWith(link.to) && (
+                      <motion.span
+                        layoutId="active-star"
+                        initial={{ scale: 0, opacity: 0, rotate: -90 }}
+                        animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                        exit={{ scale: 0, opacity: 0, rotate: 90 }}
+                        className="hidden md:inline"
+                      >
+                        <FontAwesomeIcon icon={faStar} />
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </Link>
+              ))}
+            </div>
+            <div className="hidden md:flex">
+              {SocialLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-2 hover:bg-gray-800 hover:text-white transition-colors duration-200 rounded-full flex justify-center items-center"
+                >
+                  <FontAwesomeIcon icon={link.icon} className="text-lg" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-      <main className="flex-1 overflow-auto relative">
-        <motion.div
-          className="absolute right-0 bottom-0"
-          variants={headshotVariants}
-          initial={false}
-          animate={pathname === "/" ? "large" : "small"}
-          style={{ filter: `grayscale(1)` }}
-          transition={{ duration: 2 * duration }}
-        >
-          <FixedAspectRatio ratio={1}>
-            <GatsbyImage
-              className="w-full h-full"
-              fluid={file.childImageSharp.fluid}
-              alt="Truck background"
-              imgStyle={{ objectPosition: "left center" }}
-            />
-          </FixedAspectRatio>
-        </motion.div>
-        <AnimatePresence>
+        <main className="flex-1 overflow-auto relative">
           <motion.div
-            variants={variants}
-            initial={isFirstMount ? false : "initial"}
-            animate="enter"
-            exit="exit"
-            key={location?.pathname || "nothing"}
-            className="absolute inset-0 overflow-auto"
+            className="absolute right-0 bottom-0"
+            variants={headshotVariants}
+            initial={false}
+            animate={pathname === "/" ? "large" : "small"}
+            style={{ filter: `grayscale(1)` }}
+            transition={{ duration: 2 * duration }}
           >
-            {children}
+            <FixedAspectRatio ratio={1}>
+              <GatsbyImage
+                className="w-full h-full"
+                fluid={file.childImageSharp.fluid}
+                alt="Truck background"
+                imgStyle={{ objectPosition: "left center" }}
+              />
+            </FixedAspectRatio>
           </motion.div>
-        </AnimatePresence>
-      </main>
-    </div>
+          <AnimatePresence>
+            <motion.div
+              variants={variants}
+              initial={isFirstMount ? false : "initial"}
+              animate="enter"
+              exit="exit"
+              key={location?.pathname || "nothing"}
+              className="absolute inset-0 overflow-auto"
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
+        </main>
+      </div>
+    </AnimateSharedLayout>
   );
 };
 
