@@ -38,7 +38,7 @@ const IndexPage: React.FC = () => {
     <React.Fragment>
       <SEO title="Home" />
       <div className="w-full h-full overflow-auto">
-        <div className="container max-w-2xl">
+        <div className="container max-w-2xl py-4">
           <div className="grid gap-6">
             {Sections.map((section) => (
               <div key={section.title}>

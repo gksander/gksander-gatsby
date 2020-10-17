@@ -146,36 +146,38 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
             </Link>
           </div>
           <div className="flex-1 flex md:flex-col">
-            <div className="flex-1 flex flex-row md:flex-col md:gap-y-2 gap-x-2 overflow-x-auto">
-              {Links.map((link) => (
-                <Link
-                  to={link.to}
-                  key={link.to}
-                  className="flex items-center p-1 rounded hover:bg-primary-800 transition-all duration-200"
-                  activeClassName="bg-primary-800"
-                  partiallyActive
-                >
-                  <div className="flex flex-1">
-                    <span className="w-8 px-1 tex-center hidden md:inline">
-                      <FontAwesomeIcon icon={link.icon} />
-                    </span>
-                    <span className="flex-1">{link.title}</span>
-                  </div>
-                  <AnimatePresence>
-                    {pathname.startsWith(link.to) && (
-                      <motion.span
-                        layoutId="active-star"
-                        initial={{ scale: 0, opacity: 0, rotate: -90 }}
-                        animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                        exit={{ scale: 0, opacity: 0, rotate: 90 }}
-                        className="hidden md:inline text-white"
-                      >
-                        <FontAwesomeIcon icon={faStar} />
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                </Link>
-              ))}
+            <div className="md:flex-grow">
+              <div className="grid grid-cols-4 md:grid-cols-1 gap-2 overflow-x-auto">
+                {Links.map((link) => (
+                  <Link
+                    to={link.to}
+                    key={link.to}
+                    className="flex items-center p-1 rounded hover:bg-primary-800 transition-all duration-200"
+                    activeClassName="bg-primary-800"
+                    partiallyActive
+                  >
+                    <div className="flex flex-1">
+                      <span className="w-8 px-1 tex-center hidden md:inline">
+                        <FontAwesomeIcon icon={link.icon} />
+                      </span>
+                      <span className="flex-1">{link.title}</span>
+                    </div>
+                    <AnimatePresence>
+                      {pathname.startsWith(link.to) && (
+                        <motion.span
+                          layoutId="active-star"
+                          initial={{ scale: 0, opacity: 0, rotate: -90 }}
+                          animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                          exit={{ scale: 0, opacity: 0, rotate: 90 }}
+                          className="hidden md:inline text-white"
+                        >
+                          <FontAwesomeIcon icon={faStar} />
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </Link>
+                ))}
+              </div>
             </div>
             <div className="hidden md:flex justify-center">
               {SocialLinks.map((link) => (
