@@ -8,7 +8,7 @@ export const SampleContentContainer: React.FC<{
   subtitle: string;
 }> = ({ sourceUrl, children, title = "Title", subtitle = "Subtitle" }) => {
   return (
-    <div className="bg-gray-300 rounded overflow-hidden">
+    <div className="bg-white border rounded overflow-hidden">
       <div className="p-3 flex justify-between items-center">
         <div className="text-gray-800 leading-tight">
           <div className="font-bold">{title}</div>

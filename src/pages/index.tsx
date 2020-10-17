@@ -37,12 +37,12 @@ const IndexPage: React.FC = () => {
   return (
     <React.Fragment>
       <SEO title="Home" />
-      <div className="w-full h-full p-2 overflow-auto">
-        <div className="container max-w-4xl">
-          <div className="grid gap-6 p-2">
+      <div className="w-full h-full overflow-auto">
+        <div className="container max-w-2xl">
+          <div className="grid gap-6">
             {Sections.map((section) => (
               <div key={section.title}>
-                <div className="text-4xl font-fancy text-primary-700">
+                <div className="text-3xl md:text-4xl font-fancy text-primary-700">
                   {section.title}.
                 </div>
                 <div className="text-gray-800 max-w-xl">

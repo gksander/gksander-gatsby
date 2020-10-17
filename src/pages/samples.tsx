@@ -8,6 +8,7 @@ import { LoadingClock } from "../components/Samples/LoadingClock";
 import { LoadingSpinner } from "../components/Samples/LoadingSpinner";
 import { LoadingRainbox } from "../components/Samples/LoadingRainbox";
 import { PokemonCardSelector } from "../components/Samples/PokemonCardSelector";
+import { Spacer } from "../components/Spacer";
 
 type WebSample = {
   title: string;
@@ -115,60 +116,69 @@ const Samples: React.FC<{ location?: any }> = ({ location }) => {
     <>
       <SEO title="Samples" />
       <div className="w-full h-full overflow-auto">
-        <div className="container max-w-4xl">
-          <SamplesHero />
-          {/* Web animations */}
-          <div className="container max-w-5xl py-10">
-            <div className="font-fancy text-4xl font-thin">
-              Web Animations (JS and CSS)
-            </div>
-            <div className="text-gray-700">
-              Here are some samples using raw CSS animations, as well as GSAP +
-              Vue.
-            </div>
-            <div className="mb-4" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {webSamples.map((sample) => (
-                <SampleContentContainer
-                  sourceUrl={sample.sourceUrl}
-                  key={sample.sourceUrl}
-                  title={sample.title}
-                  subtitle={sample.subtitle}
-                >
-                  <div className={sample.wrappingClass}>
-                    {/* @ts-ignore*/}
-                    <sample.component color={defaultColor} />
-                  </div>
-                </SampleContentContainer>
-              ))}
+        <div className="container max-w-2xl">
+          <div className="flex justify-center">
+            <div className="max-w-xl text-center">
+              <div className="font-fancy text-6xl font-thin text-primary-700">
+                Code Samples
+              </div>
+              <div className="text-gray-700 max-w-2xl">
+                Outside of building full applications, I like tinkering. This
+                page is a collection of samples (mostly around SVG and
+                animations) I've been playing around with lately.
+              </div>
             </div>
           </div>
+          <Spacer />
+          {/* Web animations */}
+          <div className="font-fancy text-3xl font-thin">
+            Web Animations (JS and CSS)
+          </div>
+          <div className="text-gray-700">
+            Here are some samples using raw CSS animations, as well as GSAP +
+            Vue.
+          </div>
+          <div className="mb-4" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {webSamples.map((sample) => (
+              <SampleContentContainer
+                sourceUrl={sample.sourceUrl}
+                key={sample.sourceUrl}
+                title={sample.title}
+                subtitle={sample.subtitle}
+              >
+                <div className={sample.wrappingClass}>
+                  {/* @ts-ignore*/}
+                  <sample.component color={defaultColor} />
+                </div>
+              </SampleContentContainer>
+            ))}
+          </div>
+          <Spacer />
           {/* Vidoes */}
-          <div className="container max-w-5xl">
-            <div className="font-fancy text-4xl font-thin">
-              React Native Animations
-            </div>
-            <div className="text-gray-700">
-              Here are some mobile samples using React Native's Animated API.
-            </div>
-            <div className="mb-4" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-10">
-              {videoSamples.map((sample) => (
-                <SampleContentContainer
-                  title={sample.title}
-                  subtitle={sample.subtitle}
-                  sourceUrl={sample.sourceUrl}
-                  key={sample.sourceUrl}
-                >
-                  <video
-                    src={sample.src}
-                    controls
-                    loop
-                    className="w-full h-full"
-                  />
-                </SampleContentContainer>
-              ))}
-            </div>
+          <div className="font-fancy text-3xl font-thin">
+            React Native Animations
+          </div>
+          <div className="text-gray-700">
+            Here are some mobile samples using React Native's Animated API.
+          </div>
+          <div className="mb-4" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-10">
+            {videoSamples.map((sample) => (
+              <SampleContentContainer
+                title={sample.title}
+                subtitle={sample.subtitle}
+                sourceUrl={sample.sourceUrl}
+                key={sample.sourceUrl}
+              >
+                <video
+                  src={sample.src}
+                  controls
+                  loop
+                  className="w-full h-full"
+                />
+              </SampleContentContainer>
+            ))}
           </div>
         </div>
       </div>

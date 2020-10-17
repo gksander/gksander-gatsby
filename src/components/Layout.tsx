@@ -112,7 +112,7 @@ const headshotVariants: Variants = {
  */
 const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
   const [isFirstMount, setIsFirstMount] = React.useState(true);
-  const pathname = location?.pathname;
+  const pathname = location?.pathname || "";
 
   // Headshot image
   const { file } = useStaticQuery(
@@ -134,10 +134,10 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
   }, [pathname]);
 
   return (
-    <AnimateSharedLayout>
-      <div className="flex flex-col md:flex-row md:flex-shrink-0 w-screen h-screen overflow-hidden bg-white">
+    <div className="flex flex-col md:flex-row md:flex-shrink-0 w-screen h-screen overflow-hidden bg-white">
+      <AnimateSharedLayout>
         <div className="w-full border-b md:border-b-0 md:shadow-none md:w-64 p-2 md:p-4 flex flex-col bg-primary-700 text-white">
-          <div className="md:pb-3">
+          <div className="mb-1 md:mb-3">
             <Link
               to="/"
               className="font-bold text-xl md:text-3xl leading-tight"
@@ -146,16 +146,17 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
             </Link>
           </div>
           <div className="flex-1 flex md:flex-col">
-            <div className="flex-1 flex flex-row md:flex-col md:gap-y-2 gap-x-2">
+            <div className="flex-1 flex flex-row md:flex-col md:gap-y-2 gap-x-2 overflow-x-auto">
               {Links.map((link) => (
                 <Link
                   to={link.to}
                   key={link.to}
                   className="flex items-center p-1 rounded hover:bg-primary-800 transition-all duration-200"
                   activeClassName="bg-primary-800"
+                  partiallyActive
                 >
                   <div className="flex flex-1">
-                    <span className="w-8 text-center hidden md:inline">
+                    <span className="w-8 px-1 tex-center hidden md:inline">
                       <FontAwesomeIcon icon={link.icon} />
                     </span>
                     <span className="flex-1">{link.title}</span>
@@ -183,49 +184,49 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2 hover:bg-gray-800 hover:text-white transition-colors duration-200 rounded-full flex justify-center items-center"
+                  className="p-2 hover:bg-primary-800 hover:text-white transition-colors duration-200 rounded-full flex justify-center items-center"
                 >
-                  <FontAwesomeIcon icon={link.icon} className="text-lg" />
+                  <FontAwesomeIcon icon={link.icon} className="text-xl" />
                 </a>
               ))}
             </div>
           </div>
         </div>
-        <main className="flex-1 overflow-auto relative">
-          <motion.div
-            className="absolute right-0 bottom-0"
-            variants={headshotVariants}
-            initial={false}
-            animate={pathname === "/" ? "large" : "small"}
-            style={{ filter: `grayscale(1)` }}
-            transition={{ duration: 2 * duration }}
-          >
-            <FixedAspectRatio ratio={1}>
-              <GatsbyImage
-                className="w-full h-full"
-                fluid={file.childImageSharp.fluid}
-                alt="Truck background"
-                imgStyle={{ objectPosition: "left center" }}
-              />
-            </FixedAspectRatio>
-          </motion.div>
-          <div className="absolute inset-0 overflow-hidden bg-white bg-opacity-75">
-            <AnimatePresence>
-              <motion.div
-                variants={variants}
-                initial={isFirstMount ? false : "initial"}
-                animate="enter"
-                exit="exit"
-                key={location?.pathname || "nothing"}
-                className="absolute inset-0"
-              >
-                {children}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </main>
-      </div>
-    </AnimateSharedLayout>
+      </AnimateSharedLayout>
+      <main className="flex-1 overflow-auto relative">
+        <motion.div
+          className="absolute right-0 bottom-0"
+          variants={headshotVariants}
+          initial={false}
+          animate={pathname === "/" ? "large" : "small"}
+          style={{ filter: `grayscale(1)` }}
+          transition={{ duration: 2 * duration }}
+        >
+          <FixedAspectRatio ratio={1}>
+            <GatsbyImage
+              className="w-full h-full"
+              fluid={file.childImageSharp.fluid}
+              alt="Truck background"
+              imgStyle={{ objectPosition: "left center" }}
+            />
+          </FixedAspectRatio>
+        </motion.div>
+        <div className="absolute inset-0 overflow-hidden bg-white bg-opacity-75">
+          <AnimatePresence>
+            <motion.div
+              variants={variants}
+              initial={isFirstMount ? false : "initial"}
+              animate="enter"
+              exit="exit"
+              key={location?.pathname || "nothing"}
+              className="absolute inset-0"
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </main>
+    </div>
   );
 };
 

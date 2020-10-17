@@ -53,7 +53,7 @@ const iconVariants: Variants = {
 const Contact: React.FC = () => {
   return (
     <div className="w-full h-full overflow-auto">
-      <div className="container max-w-4xl p-2">
+      <div className="container max-w-4xl">
         <div className="text-center">
           <div className="font-fancy text-6xl font-thin text-primary-700">
             Get in touch!
@@ -66,7 +66,7 @@ const Contact: React.FC = () => {
             {records.map((rec) => (
               <motion.a
                 key={rec.title}
-                className="flex items-center text-gray-800 hover:text-primary-800 transition-color duration-300 cursor-pointer rounded p-3 bg-white"
+                className="flex items-center text-gray-800 hover:text-primary-800 transition-color duration-300 cursor-pointer rounded p-3 bg-white border md:border-transparent"
                 href={rec.href}
                 target="_blank"
                 rel="noreferrer"
