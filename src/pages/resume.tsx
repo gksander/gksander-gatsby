@@ -1,6 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 import { Spacer } from "../components/Spacer";
+import { SEO } from "../components/Seo";
 
 // Experience shape
 type IExperience = {
@@ -129,65 +130,68 @@ const SectionTitle: React.FC = ({ children }) => (
  */
 const Resume: React.FC = () => {
   return (
-    <div className="w-full h-full overflow-auto">
-      <div className="container max-w-2xl">
-        <div className="text-center">
-          <div className="font-fancy text-6xl font-thin text-primary-700">
-            Resume
+    <React.Fragment>
+      <SEO title="Resume" description="Grant Sander's Resume" />
+      <div className="w-full h-full overflow-auto">
+        <div className="container max-w-2xl">
+          <div className="text-center">
+            <div className="font-fancy text-6xl font-thin text-primary-700">
+              Resume
+            </div>
+            <div>
+              A little bit about my professional past, present, and future.
+            </div>
           </div>
-          <div>
-            A little bit about my professional past, present, and future.
+          <div className="mb-16" />
+          {/* Experience */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+            <SectionTitle>Experience</SectionTitle>
+            <div className="lg:col-span-2 grid gap-4">
+              {experiences.map((exp, i) => (
+                <DetailItem
+                  title={exp.company}
+                  subtitle={exp.title}
+                  heading={exp.time}
+                  description={exp.description}
+                  key={exp.company}
+                  isPrimary={i === 0}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="mb-16" />
-        {/* Experience */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-          <SectionTitle>Experience</SectionTitle>
-          <div className="lg:col-span-2 grid gap-4">
-            {experiences.map((exp, i) => (
-              <DetailItem
-                title={exp.company}
-                subtitle={exp.title}
-                heading={exp.time}
-                description={exp.description}
-                key={exp.company}
-                isPrimary={i === 0}
-              />
-            ))}
+          <Spacer />
+          {/* Education */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+            <SectionTitle>Education</SectionTitle>
+            <div className="lg:col-span-2 grid gap-4">
+              {educationItems.map((line, i) => (
+                <DetailItem
+                  title={line.title}
+                  subtitle={line.institution}
+                  heading={line.time}
+                  description={line.description}
+                  key={i}
+                />
+              ))}
+            </div>
+          </div>
+          <Spacer />
+          {/* Tools */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+            <SectionTitle>Tools</SectionTitle>
+            <div className="lg:col-span-2 grid gap-4">
+              {toolItems.map((item) => (
+                <div key={item.title}>
+                  <div className="font-bold">{item.title}</div>
+                  <div className="text-gray-700">{item.description}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <Spacer />
-        {/* Education */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-          <SectionTitle>Education</SectionTitle>
-          <div className="lg:col-span-2 grid gap-4">
-            {educationItems.map((line, i) => (
-              <DetailItem
-                title={line.title}
-                subtitle={line.institution}
-                heading={line.time}
-                description={line.description}
-                key={i}
-              />
-            ))}
-          </div>
-        </div>
-        <Spacer />
-        {/* Tools */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-          <SectionTitle>Tools</SectionTitle>
-          <div className="lg:col-span-2 grid gap-4">
-            {toolItems.map((item) => (
-              <div key={item.title}>
-                <div className="font-bold">{item.title}</div>
-                <div className="text-gray-700">{item.description}</div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
-      <Spacer />
-    </div>
+    </React.Fragment>
   );
 };
 

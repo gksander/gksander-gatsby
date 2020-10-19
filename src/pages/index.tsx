@@ -36,7 +36,7 @@ const IndexPage: React.FC = () => {
 
   return (
     <React.Fragment>
-      <SEO title="Home" />
+      <SEO title="Home" description="Learn a little bit about Grant Sander." />
       <div className="w-full h-full overflow-auto">
         <div className="container max-w-2xl py-4">
           <div className="grid gap-6">

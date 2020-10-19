@@ -6,6 +6,7 @@ import {
   TwitterIcon,
 } from "../components/HomePage/SocialIcons";
 import { motion, Variants } from "framer-motion";
+import { SEO } from "../components/Seo";
 
 type ContactRecord = {
   title: string;
@@ -52,46 +53,49 @@ const iconVariants: Variants = {
 
 const Contact: React.FC = () => {
   return (
-    <div className="w-full h-full overflow-auto">
-      <div className="container max-w-4xl">
-        <div className="text-center">
-          <div className="font-fancy text-6xl font-thin text-primary-700">
-            Get in touch!
+    <React.Fragment>
+      <SEO title="Get in touch!" description="Hit Grant up!" />
+      <div className="w-full h-full overflow-auto">
+        <div className="container max-w-4xl">
+          <div className="text-center">
+            <div className="font-fancy text-6xl font-thin text-primary-700">
+              Get in touch!
+            </div>
+            <div>Want to share ideas? Hit me up!</div>
           </div>
-          <div>Want to share ideas? Hit me up!</div>
-        </div>
-        <div className="mb-12" />
-        <div className="flex justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 max-w-lg gap-3 w-full">
-            {records.map((rec) => (
-              <motion.a
-                key={rec.title}
-                className="flex items-center text-gray-800 hover:text-primary-800 transition-color duration-300 cursor-pointer rounded p-3 bg-white border md:border-transparent"
-                href={rec.href}
-                target="_blank"
-                rel="noreferrer"
-                initial="rest"
-                whileHover="hover"
-              >
-                <motion.div
-                  className="w-10 mr-3"
-                  variants={iconVariants}
+          <div className="mb-12" />
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 max-w-lg gap-3 w-full">
+              {records.map((rec) => (
+                <motion.a
+                  key={rec.title}
+                  className="flex items-center text-gray-800 hover:text-primary-800 transition-color duration-300 cursor-pointer rounded p-3 bg-white border md:border-transparent"
+                  href={rec.href}
+                  target="_blank"
+                  rel="noreferrer"
                   initial="rest"
+                  whileHover="hover"
                 >
-                  <rec.icon />
-                </motion.div>
-                <div>
-                  <div className="text-gray-700 ">{rec.title}</div>
-                  <div className="text-lg font-bold leading-3">
-                    {rec.linkTitle}
+                  <motion.div
+                    className="w-10 mr-3"
+                    variants={iconVariants}
+                    initial="rest"
+                  >
+                    <rec.icon />
+                  </motion.div>
+                  <div>
+                    <div className="text-gray-700 ">{rec.title}</div>
+                    <div className="text-lg font-bold leading-3">
+                      {rec.linkTitle}
+                    </div>
                   </div>
-                </div>
-              </motion.a>
-            ))}
+                </motion.a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -1,6 +1,7 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
+import { SEO } from "../components/Seo";
 import { Spacer } from "../components/Spacer";
 
 type Project = {
@@ -53,41 +54,47 @@ const projects: Project[] = [
 
 const Projects: React.FC = () => {
   return (
-    <div className="w-full h-full overflow-auto">
-      <div className="container max-w-2xl">
-        <div className="text-center">
-          <div className="font-fancy text-6xl font-thin text-primary-700">
-            Projects
-          </div>
-          <div>A sample of some things I've worked on.</div>
-        </div>
-        <Spacer />
-        <div className="grid gap-6">
-          {projects.map((proj) => (
-            <div key={proj.title}>
-              <div className="font-bold text-gray-900 text-lg">
-                {proj.title}
-              </div>
-              <div className="text-gray-700">{proj.description}</div>
-              {proj.link && (
-                <div className="flex">
-                  <a
-                    href={proj.link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="block flex text-gray-700 items-center hover:text-primary-700 transition-color duration-200 mt-1"
-                  >
-                    <span className="mr-2">{proj.link.title}</span>
-                    <FontAwesomeIcon icon={faArrowRight} className="text-sm" />
-                  </a>
-                </div>
-              )}
+    <React.Fragment>
+      <SEO title="Projects" description="Some of Grant Sander's projects." />
+      <div className="w-full h-full overflow-auto">
+        <div className="container max-w-2xl">
+          <div className="text-center">
+            <div className="font-fancy text-6xl font-thin text-primary-700">
+              Projects
             </div>
-          ))}
+            <div>A sample of some things I've worked on.</div>
+          </div>
+          <Spacer />
+          <div className="grid gap-6">
+            {projects.map((proj) => (
+              <div key={proj.title}>
+                <div className="font-bold text-gray-900 text-lg">
+                  {proj.title}
+                </div>
+                <div className="text-gray-700">{proj.description}</div>
+                {proj.link && (
+                  <div className="flex">
+                    <a
+                      href={proj.link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="block flex text-gray-700 items-center hover:text-primary-700 transition-color duration-200 mt-1"
+                    >
+                      <span className="mr-2">{proj.link.title}</span>
+                      <FontAwesomeIcon
+                        icon={faArrowRight}
+                        className="text-sm"
+                      />
+                    </a>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <Spacer />
         </div>
-        <Spacer />
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

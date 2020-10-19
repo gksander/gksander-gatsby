@@ -114,7 +114,7 @@ const defaultColor = "#A06B9A";
 const Samples: React.FC<{ location?: any }> = ({ location }) => {
   return (
     <>
-      <SEO title="Samples" />
+      <SEO title="Samples" description="Some samples from Grant Sander" />
       <div className="w-full h-full overflow-auto">
         <div className="container max-w-2xl">
           <div className="flex justify-center">
