@@ -23,6 +23,10 @@ export const LoadingBlocks: React.FC = () => (
         fill={color}
         rx={squareWidth / 10}
         className={styles.rect}
+        style={{
+          // @ts-ignore
+          "--i": `-${i * 0.65}s`,
+        }}
       />
     ))}
   </svg>

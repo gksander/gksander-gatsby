@@ -4,12 +4,7 @@
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-
-    @for $i from 1 through 8 {
-      &:nth-of-type(#{$i}) {
-        animation-delay: #{0.063 * $i}s;
-      }
-    }
+    animation-delay: var(--i);
   }
 }
 

@@ -9,12 +9,7 @@ $numSquares: 3;
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-
-    @for $i from 1 through $numSquares {
-      &:nth-of-type(#{$i}) {
-        animation-delay: -#{$i * 0.65}s;
-      }
-    }
+    animation-delay: var(--i);
   }
 }
 

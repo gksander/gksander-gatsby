@@ -6,7 +6,6 @@ const trackRadius = 50;
 const dotRadius = 7;
 const numDots = 7;
 const numDivisions = 18;
-const PI = Math.PI;
 const dotArray = Array.from({ length: numDots }).map((_, i) => i);
 
 export const LoadingSpinner: React.FC<{ color?: string }> = ({
@@ -33,6 +32,10 @@ export const LoadingSpinner: React.FC<{ color?: string }> = ({
             r={dotRadius}
             fill={color}
             className={styles.circle}
+            style={{
+              // @ts-ignore
+              "--i": `${0.063 * i}s`,
+            }}
           />
         );
       })}
