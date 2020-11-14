@@ -9,6 +9,7 @@ import { LoadingSpinner } from "../components/Samples/LoadingSpinner";
 import { LoadingRainbox } from "../components/Samples/LoadingRainbox";
 import { PokemonCardSelector } from "../components/Samples/PokemonCardSelector";
 import { Spacer } from "../components/Spacer";
+import { Accordion } from "../components/Samples/Accordion";
 
 type WebSample = {
   title: string;
@@ -28,6 +29,14 @@ const webSamples: WebSample[] = [
     component: PokemonCardSelector,
     wrappingClass: "w-full",
     expandedWrappingClass: "w-5/6 sm:w-1/2",
+  },
+  {
+    title: "Accordion",
+    subtitle: "Click one!",
+    sourceUrl:
+      "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/Accordion.tsx",
+    component: Accordion,
+    wrappingClass: "w-full",
   },
   {
     title: "Loading Speedometer",
