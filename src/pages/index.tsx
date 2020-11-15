@@ -1,6 +1,7 @@
 import * as React from "react";
 import { SEO } from "../components/Seo";
 import { graphql, useStaticQuery } from "gatsby";
+import { Spacer } from "../components/Spacer";
 
 const Sections: { title: string; description: string }[] = [
   {
@@ -52,6 +53,7 @@ const IndexPage: React.FC = () => {
             ))}
           </div>
         </div>
+        <Spacer />
       </div>
     </React.Fragment>
   );

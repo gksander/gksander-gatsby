@@ -146,18 +146,18 @@ const Layout: React.FC<{ location?: any }> = ({ children, location }) => {
             </Link>
           </div>
           <div className="flex-1 flex md:flex-col">
-            <div className="md:flex-grow">
-              <div className="grid grid-cols-4 md:grid-cols-1 gap-2 overflow-x-auto">
+            <div className="md:flex-grow w-full">
+              <div className="overflow-x-auto md:overflow-x-hidden flex md:flex-col">
                 {Links.map((link) => (
                   <Link
                     to={link.to}
                     key={link.to}
-                    className="flex items-center p-1 rounded hover:bg-primary-800 transition-all duration-200"
+                    className="flex items-center py-1 px-2 rounded hover:bg-primary-800 transition-all duration-200 mr-2 md:mr-0 md:mb-2"
                     activeClassName="bg-primary-800"
                     partiallyActive
                   >
                     <div className="flex flex-1">
-                      <span className="w-8 px-1 tex-center hidden md:inline">
+                      <span className="w-8 px-1 tex-center inline">
                         <FontAwesomeIcon icon={link.icon} />
                       </span>
                       <span className="flex-1">{link.title}</span>
