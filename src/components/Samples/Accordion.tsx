@@ -35,7 +35,7 @@ export const Accordion: React.FC = () => {
         <React.Fragment key={title}>
           <div
             className={classNames(
-              "flex justify-between items-center cursor-pointer text-gray-800 hover:bg-gray-100 rounded transition-colors duration-150 p-2",
+              "flex justify-between items-center cursor-pointer text-gray-800 hover:text-primary-700 rounded transition-colors duration-150 p-2",
               i === selectedIndex && "text-primary-700",
             )}
             onClick={() => setSelectedIndex(i === selectedIndex ? null : i)}
