@@ -10,6 +10,7 @@ import { LoadingRainbox } from "../components/Samples/LoadingRainbox";
 import { PokemonCardSelector } from "../components/Samples/PokemonCardSelector";
 import { Spacer } from "../components/Spacer";
 import { Accordion } from "../components/Samples/Accordion";
+import { ProgressTracker } from "../components/Samples/ProgressTracker";
 
 type WebSample = {
   title: string;
@@ -36,6 +37,14 @@ const webSamples: WebSample[] = [
     sourceUrl:
       "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/Accordion.tsx",
     component: Accordion,
+    wrappingClass: "w-full",
+  },
+  {
+    title: "Progress Tracker",
+    subtitle: "Click a step",
+    sourceUrl:
+      "https://github.com/gksander/gksander-gatsby/blob/master/src/components/Samples/ProgressTracker.tsx",
+    component: ProgressTracker,
     wrappingClass: "w-full",
   },
   {
