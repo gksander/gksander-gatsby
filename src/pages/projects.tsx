@@ -31,6 +31,14 @@ const projects: Project[] = [
     },
   },
   {
+    title: "GifMaker",
+    description: `Browser-based FFMPEG video converter. Handy for turning .mov files into GIFs.`,
+    link: {
+      href: "https://github.com/gksander/gif-maker",
+      title: "View the source and live site",
+    },
+  },
+  {
     title: "React Native Animation Samples",
     description: `An ongoing playground for creating snippets of cool animations in React Native using React Native's built-in Animated API. A fun place for me to explore mobile animation techniques.`,
     link: {
