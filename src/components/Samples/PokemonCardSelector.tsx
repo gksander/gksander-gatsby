@@ -47,7 +47,7 @@ export const PokemonCardSelector: React.FC = () => {
           {pokemon.map((pokemon) => (
             <FixedAspectRatio ratio={1} key={pokemon.name}>
               <motion.img
-                src={`https://pokedex.gksander.com/img/pokemon/${pokemon.id}.svg`}
+                src={`https://pokedex.gksander.com/img/pokemon-sugimori/${pokemon.id}.png`}
                 alt={pokemon.name}
                 className="w-full h-full object-contain border-b-4 rounded p-2 cursor-pointer bg-gray-100 hover:shadow"
                 style={{ borderBottomColor: pokemon.accentColor }}
@@ -84,16 +84,16 @@ export const PokemonCardSelector: React.FC = () => {
             >
               <motion.div
                 className="w-1/2 bg-gray-100 p-3 rounded shadow-2xl cursor-auto"
-                layoutId={selectedPokemon.name}
+                layoutId={selectedPokemon?.name}
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="font-fancy font-thin text-xl mb-3 text-center">
-                  {selectedPokemon.name}
+                  {selectedPokemon?.name}
                 </div>
                 <FixedAspectRatio ratio={1}>
                   <img
-                    src={`https://pokedex.gksander.com/img/pokemon/${selectedPokemon.id}.svg`}
-                    alt={`Pokemon ${selectedPokemon.name}`}
+                    src={`https://pokedex.gksander.com/img/pokemon-sugimori/${selectedPokemon?.id}.png`}
+                    alt={`Pokemon ${selectedPokemon?.name}`}
                     className="w-full h-full object-contain"
                   />
                 </FixedAspectRatio>
