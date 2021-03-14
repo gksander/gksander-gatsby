@@ -31,6 +31,14 @@ const projects: Project[] = [
     },
   },
   {
+    title: "React Dynamic Geometry",
+    description: `A React library for creating dynamic geometry boards. This was a "could I do that?" project, and was more for fun than for real-world use. Uses React, TypeScript, Jotai, and _MATH_.`,
+    link: {
+      href: "https://github.com/gksander/react-dynamic-geometry",
+      title: "View the source with some examples",
+    },
+  },
+  {
     title: "GifMaker",
     description: `Browser-based FFMPEG video converter. Handy for turning .mov files into GIFs.`,
     link: {
