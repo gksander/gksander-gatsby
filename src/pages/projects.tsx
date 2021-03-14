@@ -24,9 +24,9 @@ const projects: Project[] = [
   },
   {
     title: "Personal PokeDex",
-    description: `A couch-project I put together while exploring the Gridsome.js framework (similar to Gatsby). Parsed CSVs of Pokemon data to statically-generate a site with hundreds of highly-optimized pages. Used Node tooling to extract vibrant colors to spice up the app's design.`,
+    description: `A couch-project I put together while exploring Next.js static site generation. Parsed CSVs of Pokemon data to statically-generate a site with hundreds of highly-optimized pages. Used Node tooling to extract vibrant colors to spice up the app's design.`,
     link: {
-      href: "https://github.com/gksander/gks-pokedex-gridsome",
+      href: "https://github.com/gksander/gks-pokedex-next",
       title: "View the source and live site",
     },
   },
