@@ -15,12 +15,12 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "ArtisanHD Configurator",
-    description: `This is a production app I built for Artisan Colour using full-stack JavaScript (Vue.js on the front, Node.js on the back). Custom product configurator and checkout flow with 2D and 3D product previews.`,
+    title: "React Native TurboStyles",
+    description: `TailwindCSS-inspired styling library for React Native.`,
     link: {
-      href: "https://secure.artisanhd.com",
-      title: "View the live site",
-    },
+      href: "https://turbostyles.gksander.com/",
+      title: "View the docs"
+    }
   },
   {
     title: "Personal PokeDex",
@@ -28,6 +28,14 @@ const projects: Project[] = [
     link: {
       href: "https://github.com/gksander/gks-pokedex-next",
       title: "View the source and live site",
+    },
+  },
+  {
+    title: "ArtisanHD Configurator",
+    description: `This is a production app I built for Artisan Colour using full-stack JavaScript (Vue.js on the front, Node.js on the back). Custom product configurator and checkout flow with 2D and 3D product previews.`,
+    link: {
+      href: "https://secure.artisanhd.com",
+      title: "View the live site",
     },
   },
   {
@@ -53,10 +61,6 @@ const projects: Project[] = [
       href: "https://github.com/gksander/react-native-animation-samples",
       title: "View the source",
     },
-  },
-  {
-    title: "COSma Learning",
-    description: `My first production application (that is no longer in commission). Contained a full-fledge online Precalculus course (with interactive lessons, exercises, and assessments) and built with PHP, MySQL, and a lot of JavaScript. Large portions of that code are still in use at ASU today.`,
   },
   {
     title: `LearnJS Playground`,

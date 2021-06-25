@@ -40,7 +40,7 @@ const experiences: IExperience[] = [
     title: `Software Engineer`,
     company: "COSma Learning",
     description: `Development of custom online math courseware. JavaScript, PHP, and MySQL.`,
-    time: `Jan. 2016 &ndash; Aug. 2018`,
+    time: `Jan. 2015 &ndash; Aug. 2018`,
   },
   {
     title: `Math Instructor`,
@@ -86,7 +86,11 @@ const toolItems: ToolItem[] = [
   },
   {
     title: "React.js and friends",
-    description: "React, React Native, Redux, MobX, etc.",
+    description: "React, Next.js, Redux, MobX, etc.",
+  },
+  {
+    title: "React Native",
+    description: "Navigation, animation, native development with Swift & Kotlin."
   },
   {
     title: "Vue.js and friends",
